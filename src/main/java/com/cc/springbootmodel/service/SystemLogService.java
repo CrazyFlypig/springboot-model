@@ -6,7 +6,7 @@ import com.cc.springbootmodel.core.universal.Service;
 /**
 * @Description: SystemLogService接口
 * @author cc
-* @date 2019/05/27 23:48
+* @date 2019/07/17 21:32
 */
 public interface SystemLogService extends Service<SystemLog> {
 }

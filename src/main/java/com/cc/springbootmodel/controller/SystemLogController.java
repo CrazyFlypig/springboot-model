@@ -16,7 +16,7 @@ import java.util.List;
 /**
 * @Description: SystemLogController类
 * @author cc
-* @date 2019/05/27 23:48
+* @date 2019/07/17 21:32
 */
 @RestController
 @RequestMapping("/systemLog")
