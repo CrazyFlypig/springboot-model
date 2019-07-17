@@ -33,13 +33,6 @@ spring:
   resources:
     #不要为我们工程中的资源文件建立映射
     add-mappings: false
-logging:
-  level:
-    com.cc.springbootmodel.dao:
-      DEBUG
-  file:
-    max-size: 20MB
-  path: logs
 pagehelper:
   helper-dialect: mysql
   reasonable: true
