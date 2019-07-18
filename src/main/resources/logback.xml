@@ -62,7 +62,7 @@
         </encoder>
     </appender>
     <!--指定最基础的日志输出级别-->
-    <root level="DEBUGGER">
+    <root level="INFO">
         <!--appender将会添加到这个loger-->
         <appender-ref ref="STDOUT"/>
     </root>

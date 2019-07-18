@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cc.springbootmodel.dao.CheckJobInstanceLogMapper" >
+  <resultMap id="BaseResultMap" type="com.cc.springbootmodel.entity.CheckJobInstanceLog" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="instance_id" property="instanceId" jdbcType="VARCHAR" />
+    <result column="job_id" property="jobId" jdbcType="VARCHAR" />
+    <result column="check_id" property="checkId" jdbcType="VARCHAR" />
+    <result column="result_num" property="resultNum" jdbcType="INTEGER" />
+    <result column="query_start_time" property="queryStartTime" jdbcType="TIMESTAMP" />
+    <result column="query_end_time" property="queryEndTime" jdbcType="TIMESTAMP" />
+    <result column="result_status" property="resultStatus" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

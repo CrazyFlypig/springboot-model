@@ -1,3 +1,0 @@
-2019-07-17 23:46:32,539 [main] INFO  c.c.s.SpringbootModelApplication 50 - Starting SpringbootModelApplication on cc with PID 13632 (D:\IdeaProjects\springboot-model\target\classes started by cc in D:\IdeaProjects\springboot-model)
-2019-07-17 23:46:32,551 [main] INFO  c.c.s.SpringbootModelApplication 675 - No active profile set, falling back to default profiles: default
-2019-07-17 23:46:36,908 [main] INFO  c.c.s.SpringbootModelApplication 59 - Started SpringbootModelApplication in 5.01 seconds (JVM running for 6.756)

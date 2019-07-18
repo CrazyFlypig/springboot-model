@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cc.springbootmodel.dao.CheckInfoConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.cc.springbootmodel.entity.CheckInfoConfig" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="explain_remark" property="explainRemark" jdbcType="VARCHAR" />
+    <result column="check_method" property="checkMethod" jdbcType="INTEGER" />
+    <result column="check_frequency" property="checkFrequency" jdbcType="VARCHAR" />
+    <result column="quary_start_time" property="quaryStartTime" jdbcType="TIMESTAMP" />
+    <result column="quary_end_time" property="quaryEndTime" jdbcType="TIMESTAMP" />
+    <result column="result_table" property="resultTable" jdbcType="VARCHAR" />
+    <result column="check_statute" property="checkStatute" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
