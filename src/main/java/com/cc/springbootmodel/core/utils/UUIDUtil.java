@@ -7,11 +7,13 @@ import java.util.UUID;
  * @date 2019-06-26 11:01:01
  */
 
-public class GetUUIDUtil {
+public class UUIDUtil {
+
     //获取32UUID，常用于数据库主键
     public static String getUUID(){
         return UUID.randomUUID().toString().replace("-", "").toLowerCase();
     }
+
     //获取指定位数的UUID
     public static String getUUID(int length){
         String uuid = UUID.randomUUID().toString().replace("-", "").toLowerCase();

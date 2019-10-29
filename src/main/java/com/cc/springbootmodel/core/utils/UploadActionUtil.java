@@ -38,7 +38,7 @@ public class UploadActionUtil {
                     //如果名称不为“”,说明该文件存在，否则说明该文件不存在
                     if (!myFileName.trim().equals("")){
                         String fileType = myFileName.substring(myFileName.lastIndexOf("."));
-                        String tempName = GetUUIDUtil.getUUID(15) + fileType;
+                        String tempName = UUIDUtil.getUUID(15) + fileType;
                         //创建文件夹
                         String folderPath = CommonConf.uploadFilePath + CommonConf.pathSeparator + folderName();
                         File fileFolder = new File(folderPath);
