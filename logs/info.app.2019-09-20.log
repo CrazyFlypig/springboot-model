@@ -1,4 +1,0 @@
-2019-09-20 00:01:08,401 [main] INFO  c.c.s.SpringbootModelApplication 50 - Starting SpringbootModelApplication on ccdeMacBook-Pro.local with PID 25935 (/Users/cc/IdeaProjects/springboot-model/target/classes started by cc in /Users/cc/IdeaProjects/springboot-model)
-2019-09-20 00:01:08,406 [main] INFO  c.c.s.SpringbootModelApplication 675 - No active profile set, falling back to default profiles: default
-2019-09-20 00:01:09,464 [main] INFO  c.c.s.common.CommonConf 34 - 参数配置加载成功
-2019-09-20 00:01:10,953 [main] INFO  c.c.s.SpringbootModelApplication 59 - Started SpringbootModelApplication in 2.958 seconds (JVM running for 3.598)
