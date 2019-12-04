@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cc.springbootmodel.dao.DataDirMapper">
+    <resultMap id="BaseResultMap" type="com.cc.springbootmodel.entity.DataDir">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="resource_name" property="resourceName" jdbcType="VARCHAR"/>
+        <result column="key_first" property="keyFirst" jdbcType="VARCHAR"/>
+        <result column="key_second" property="keySecond" jdbcType="VARCHAR"/>
+        <result column="key_class" property="keyClass" jdbcType="VARCHAR"/>
+        <result column="attr_class" property="attrClass" jdbcType="VARCHAR"/>
+        <result column="org_type" property="orgType" jdbcType="VARCHAR"/>
+        <result column="data_records" property="dataRecords" jdbcType="INTEGER"/>
+        <result column="data_size" property="dataSize" jdbcType="DOUBLE"/>
+        <result column="update_cycle" property="updateCycle" jdbcType="VARCHAR"/>
+        <result column="data_day_increase_num" property="dataDayIncreaseNum" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--  这里的id是接口中的方法名-->
+    <select id="getResourceNum" resultType="java.lang.Integer">
+        select count(distinct resource_name) from data_dir where 1=1
+        <if test="dataDir.keyFirst != null">
+            and key_first = #{dataDir.keyFirst}
+        </if>
+        <if test="dataDir.keySecond != null">
+            and key_second = #{dataDir.keySecond}
+        </if>
+        <if test="dataDir.keyClass != null">
+            and key_class = #{dataDir.keyClass}
+        </if>
+        <if test="dataDir.attrClass != null">
+            and attr_class = #{dataDir.attrClass}
+        </if>
+        <if test="dataDir.orgType != null">
+            and org_type = #{dataDir.orgType}
+        </if>
+    </select>
+    <select id="getRecordNum" resultType="java.lang.Integer">
+        select sum(data_records) from data_dir where 1=1
+        <if test="dataDir.keyFirst != null">
+            and key_first = #{dataDir.keyFirst}
+        </if>
+        <if test="dataDir.keySecond != null">
+            and key_second = #{dataDir.keySecond}
+        </if>
+        <if test="dataDir.keyClass != null">
+            and key_class = #{dataDir.keyClass}
+        </if>
+        <if test="dataDir.attrClass != null">
+            and attr_class = #{dataDir.attrClass}
+        </if>
+        <if test="dataDir.orgType != null">
+            and org_type = #{dataDir.orgType}
+        </if>
+    </select>
+    <select id="getDataSize" resultType="java.lang.Integer">
+        select sum(data_size) from data_dir where 1=1
+        <if test="dataDir.keyFirst != null">
+            and key_first = #{dataDir.keyFirst}
+        </if>
+        <if test="dataDir.keySecond != null">
+            and key_second = #{dataDir.keySecond}
+        </if>
+        <if test="dataDir.keyClass != null">
+            and key_class = #{dataDir.keyClass}
+        </if>
+        <if test="dataDir.attrClass != null">
+            and attr_class = #{dataDir.attrClass}
+        </if>
+        <if test="dataDir.orgType != null">
+            and org_type = #{dataDir.orgType}
+        </if>
+    </select>
+    <select id="getSpeed" resultType="java.lang.Integer">
+        select sum(data_day_increase_num) from data_dir where 1=1
+        <if test="dataDir.keyFirst != null">
+            and key_first = #{dataDir.keyFirst}
+        </if>
+        <if test="dataDir.keySecond != null">
+            and key_second = #{dataDir.keySecond}
+        </if>
+        <if test="dataDir.keyClass != null">
+            and key_class = #{dataDir.keyClass}
+        </if>
+        <if test="dataDir.attrClass != null">
+            and attr_class = #{dataDir.attrClass}
+        </if>
+        <if test="dataDir.orgType != null">
+            and org_type = #{dataDir.orgType}
+        </if>
+    </select>
+    <select id="getFirstKeyList" resultType="java.lang.String">
+    select distinct key_first from data_dir where 1=1
+  </select>
+    <select id="getSecondKeyList" resultType="java.lang.String">
+    select distinct key_second from data_dir where 1=1
+  </select>
+    <select id="getKeyClassList" resultType="java.lang.String">
+    select distinct key_class from data_dir where 1=1
+  </select>
+    <select id="getAttrClassList" resultType="java.lang.String">
+    select distinct attr_class from data_dir where 1=1
+  </select>
+</mapper>

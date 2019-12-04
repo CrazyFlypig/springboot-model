@@ -19,9 +19,9 @@ import java.util.*;
 public class CodeGenerator {
 
     // JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/xchzz?serverTimezone=UTC";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "root";
+    private static final String JDBC_PASSWORD = "root2019";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
     // 模板位置
     private static final String TEMPLATE_FILE_PATH = "src/test/java/resources/template/generator";
@@ -45,9 +45,9 @@ public class CodeGenerator {
      */
     public static void main(String[] args) {
         //表名
-        String tableName = "user_info";
+        String tableName = "data_dir";
         //注释
-        String comment = "用户信息表";
+        String comment = "数据目录";
         genCode(tableName,comment);
     }
 

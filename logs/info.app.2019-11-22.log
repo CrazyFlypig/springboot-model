@@ -1,0 +1,9 @@
+2019-11-22 00:52:50,508 [main] INFO  c.c.s.SpringbootModelApplication 50 - Starting SpringbootModelApplication on ccdeMacBook-Pro.local with PID 19316 (/Users/cc/IdeaProjects/springboot-model/target/classes started by cc in /Users/cc/IdeaProjects/springboot-model)
+2019-11-22 00:52:50,512 [main] INFO  c.c.s.SpringbootModelApplication 675 - No active profile set, falling back to default profiles: default
+2019-11-22 00:52:53,157 [main] INFO  c.c.s.SpringbootModelApplication 59 - Started SpringbootModelApplication in 3.123 seconds (JVM running for 3.951)
+2019-11-22 00:55:00,563 [main] INFO  c.c.s.SpringbootModelApplication 50 - Starting SpringbootModelApplication on ccdeMacBook-Pro.local with PID 19352 (/Users/cc/IdeaProjects/springboot-model/target/classes started by cc in /Users/cc/IdeaProjects/springboot-model)
+2019-11-22 00:55:00,565 [main] INFO  c.c.s.SpringbootModelApplication 675 - No active profile set, falling back to default profiles: default
+2019-11-22 00:55:02,842 [main] INFO  c.c.s.SpringbootModelApplication 59 - Started SpringbootModelApplication in 2.558 seconds (JVM running for 3.079)
+2019-11-22 01:29:32,322 [main] INFO  c.c.s.SpringbootModelApplication 50 - Starting SpringbootModelApplication on ccdeMacBook-Pro.local with PID 19578 (/Users/cc/IdeaProjects/springboot-model/target/classes started by cc in /Users/cc/IdeaProjects/springboot-model)
+2019-11-22 01:29:32,327 [main] INFO  c.c.s.SpringbootModelApplication 675 - No active profile set, falling back to default profiles: default
+2019-11-22 01:29:34,389 [main] INFO  c.c.s.SpringbootModelApplication 59 - Started SpringbootModelApplication in 2.388 seconds (JVM running for 3.095)
