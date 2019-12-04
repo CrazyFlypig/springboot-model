@@ -6,6 +6,7 @@ import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DataDirMapper extends Mapper<DataDir> {
 
@@ -25,4 +26,6 @@ public interface DataDirMapper extends Mapper<DataDir> {
     public List<String> getKeyClassList();
     //获取四级列表
     public List<String> getAttrClassList();
+    //获取数据详情
+    public List<Map<String,Object>> getDataDirList(@Param("dataDir") DataDir dataDir);
 }

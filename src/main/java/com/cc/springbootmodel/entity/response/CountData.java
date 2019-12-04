@@ -15,29 +15,8 @@ public class CountData {
     private String dataSizeUnit = "GB";
     private int speedAll = 0;
     private int speedOrg = 0;
+    private int speedUnOrg = 0;
     private String speedUnit = "万条/天";
-
-    private String data = "[{\n" +
-            "  children: [\n" +
-            "    { title: \"资源数量\", value: " + resourceNumAll + ", unit: '" + resourceNumUnit + "' },\n" +
-            "    { title: \"总记录数\", value: " + dataCountAll + ", unit: '" + dataCountUnit + "' },\n" +
-            "    { title: \"存储规模\", value: " + dataSizeAll + ", unit: '" + dataSizeUnit + "' },\n" +
-            "    { title: \"数据增速\", value: " + speedAll + ", unit: '" + speedUnit + "' },\n" +
-            "  ]\n" +
-            "}, {\n" +
-            "  title: \"结构化数据\", children: [\n" +
-            "    { title: \"资源数量\", value: " + resourceNumAll + ", unit: '" + resourceNumUnit + "' },\n" +
-            "    { title: \"总记录数\", value: " + dataCountAll + ", unit: '"+ dataCountUnit +"' },\n" +
-            "    { title: \"存储规模\", value: " + dataSizeAll + ", unit: '" + dataSizeUnit + "' },\n" +
-            "    { title: \"数据增速\", value: " + speedAll + ", unit: '" + speedUnit + "' },\n" +
-            "  ]\n" +
-            "}, {\n" +
-            "  title: \"非结构化数据\", children: [\n" +
-            "    { title: \"资源数量\", value: " + resourceNumAll + ", unit: '" + resourceNumUnit + "' },\n" +
-            "    { title: \"总记录数\", value: " + dataCountAll + ", unit: '"+ dataCountUnit +"' },\n" +
-            "    { title: \"存储规模\", value: " + dataSizeAll + ", unit: '" + dataSizeUnit + "' },\n" +
-            "  ]\n" +
-            "}]";
 
     public void setResourceNumAll(int resourceNumAll) {
         this.resourceNumAll = resourceNumAll;
@@ -99,7 +78,33 @@ public class CountData {
         this.speedUnit = speedUnit;
     }
 
+    public void setSpeedUnOrg(int speedUnOrg) {
+        this.speedUnOrg = speedUnOrg;
+    }
+
     public String getData() {
+        String data = "[{\n" +
+                "  children: [\n" +
+                "    { title: \"资源数量\", value: " + resourceNumAll + ", unit: '" + resourceNumUnit + "' },\n" +
+                "    { title: \"总记录数\", value: " + dataCountAll + ", unit: '" + dataCountUnit + "' },\n" +
+                "    { title: \"存储规模\", value: " + dataSizeAll + ", unit: '" + dataSizeUnit + "' },\n" +
+                "    { title: \"数据增速\", value: " + speedAll + ", unit: '" + speedUnit + "' },\n" +
+                "  ]\n" +
+                "}, {\n" +
+                "  title: \"结构化数据\", children: [\n" +
+                "    { title: \"资源数量\", value: " + resourceNumOrg + ", unit: '" + resourceNumUnit + "' },\n" +
+                "    { title: \"总记录数\", value: " + dataCountOrg + ", unit: '"+ dataCountUnit +"' },\n" +
+                "    { title: \"存储规模\", value: " + dataSizeOrg + ", unit: '" + dataSizeUnit + "' },\n" +
+                "    { title: \"数据增速\", value: " + speedOrg + ", unit: '" + speedUnit + "' },\n" +
+                "  ]\n" +
+                "}, {\n" +
+                "  title: \"非结构化数据\", children: [\n" +
+                "    { title: \"资源数量\", value: " + resourceNumUnOrg + ", unit: '" + resourceNumUnit + "' },\n" +
+                "    { title: \"总记录数\", value: " + dataCountUnOrg + ", unit: '"+ dataCountUnit +"' },\n" +
+                "    { title: \"存储规模\", value: " + dataSizeUnOrg + ", unit: '" + dataSizeUnit + "' },\n" +
+                "    { title: \"数据增速\", value: " + speedUnOrg + ", unit: '" + speedUnit + "' },\n" +
+                "  ]\n" +
+                "}]";
         return data;
     }
 }

@@ -7,13 +7,18 @@ import com.cc.springbootmodel.dao.DataDirMapper;
 import com.cc.springbootmodel.entity.DataDir;
 import com.cc.springbootmodel.entity.response.Catalog;
 import com.cc.springbootmodel.entity.response.CountData;
+import com.cc.springbootmodel.entity.response.DataList;
 import com.cc.springbootmodel.service.DataDirService;
 import com.cc.springbootmodel.core.universal.AbstractService;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
 * @Description: DataDirService接口实现类
@@ -26,6 +31,10 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
     @Resource
     private DataDirMapper dataDirMapper;
 
+    /**
+     * 获取目录
+     * @return 目录数据
+     */
     @Override
     public JSONObject getCatalogService(){
         //初始化根节点，获取对应数据量
@@ -45,9 +54,9 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
             DataDir temp = new DataDir();
             temp.setKeyFirst(first);
             resourceNum = dataDirMapper.getResourceNum(temp);
-            /*if (resourceNum == 0){
+            if (resourceNum == 0){
                 continue;
-            }*/
+            }
             Catalog firstValue = new Catalog(first, first, 2, "code", resourceNum, root.getCatalogId(),
                     new StringBuffer().append(root.getCatalogPath()).append(",").append(first).toString(),
                     new StringBuffer().append(root.getCatalogPathName()).append(",").append(first).toString());
@@ -55,9 +64,9 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
             for (String second : secondKeys){
                 temp.setKeySecond(second);
                 resourceNum = dataDirMapper.getResourceNum(temp);
-                /*if (resourceNum == 0){
+                if (resourceNum == 0){
                     continue;
-                }*/
+                }
                 Catalog secondValue = new Catalog(second, second, 3, "code", resourceNum, firstValue.getCatalogId(),
                         new StringBuffer().append(firstValue.getCatalogPath()).append(",").append(second).toString(),
                         new StringBuffer().append(firstValue.getCatalogPathName()).append(",").append(second).toString());
@@ -91,6 +100,11 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
         return JSONObject.parseObject(object);
     }
 
+    /**
+     * 获取统计数据
+     * @param catalogPath 当前目录节点
+     * @return 当前节点的统计数据
+     */
     @Override
     public JSONArray getCountDataService(String catalogPath) {
         DataDir dataDirAll = new DataDir();
@@ -100,45 +114,91 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
         dataDirUnOrg.setOrgType("非结构化");
         CountData result = new CountData();
         String[] values = catalogPath.split(",");
-        if (values.length >= 1){
-            dataDirAll.setKeyFirst(values[0]);
-            dataDirOrg.setKeyFirst(values[0]);
-            dataDirUnOrg.setKeyFirst(values[0]);
-        }
         if (values.length >= 2){
-            dataDirAll.setKeySecond(values[1]);
-            dataDirOrg.setKeySecond(values[1]);
-            dataDirUnOrg.setKeySecond(values[1]);
+            dataDirAll.setKeyFirst(values[1]);
+            dataDirOrg.setKeyFirst(values[1]);
+            dataDirUnOrg.setKeyFirst(values[1]);
         }
         if (values.length >= 3){
-            dataDirAll.setKeyClass(values[2]);
-            dataDirOrg.setKeyClass(values[2]);
-            dataDirUnOrg.setKeyClass(values[2]);
+            dataDirAll.setKeySecond(values[2]);
+            dataDirOrg.setKeySecond(values[2]);
+            dataDirUnOrg.setKeySecond(values[2]);
         }
         if (values.length >= 4){
-            dataDirAll.setAttrClass(values[3]);
-            dataDirOrg.setAttrClass(values[3]);
-            dataDirUnOrg.setAttrClass(values[3]);
+            dataDirAll.setKeyClass(values[3]);
+            dataDirOrg.setKeyClass(values[3]);
+            dataDirUnOrg.setKeyClass(values[3]);
         }
-        //获取资源个数
-        result.setResourceNumAll(dataDirMapper.getResourceNum(dataDirAll));
-        result.setResourceNumOrg(dataDirMapper.getResourceNum(dataDirOrg));
-        result.setResourceNumUnOrg(dataDirMapper.getResourceNum(dataDirUnOrg));
-        //获取记录数
-        result.setDataCountAll(dataDirMapper.getRecordNum(dataDirAll));
-        result.setDataCountOrg(dataDirMapper.getRecordNum(dataDirOrg));
-        result.setDataCountUnOrg(dataDirMapper.getRecordNum(dataDirUnOrg));
-        //获取存储规模
-        result.setDataSizeAll(dataDirMapper.getDataSize(dataDirAll));
-        result.setDataSizeOrg(dataDirMapper.getDataSize(dataDirOrg));
-        result.setDataSizeUnOrg(dataDirMapper.getDataSize(dataDirUnOrg));
-        //获取数据增速
-        result.setSpeedAll(dataDirMapper.getSpeed(dataDirAll));
-        result.setSpeedOrg(dataDirMapper.getSpeed(dataDirOrg));
+        if (values.length >= 4){
+            dataDirAll.setAttrClass(values[4]);
+            dataDirOrg.setAttrClass(values[4]);
+            dataDirUnOrg.setAttrClass(values[4]);
+        }
+        try {
+            //获取资源个数
+            result.setResourceNumAll(dataDirMapper.getResourceNum(dataDirAll));
+            result.setResourceNumOrg(dataDirMapper.getResourceNum(dataDirOrg));
+            result.setResourceNumUnOrg(dataDirMapper.getResourceNum(dataDirUnOrg));
+            //获取记录数
+            result.setDataCountAll(dataDirMapper.getRecordNum(dataDirAll));
+            result.setDataCountOrg(dataDirMapper.getRecordNum(dataDirOrg));
+            result.setDataCountUnOrg(dataDirMapper.getRecordNum(dataDirUnOrg));
+            //获取存储规模
+            result.setDataSizeAll(dataDirMapper.getDataSize(dataDirAll));
+            result.setDataSizeOrg(dataDirMapper.getDataSize(dataDirOrg));
+            result.setDataSizeUnOrg(dataDirMapper.getDataSize(dataDirUnOrg));
+            //获取数据增速
+            result.setSpeedAll(dataDirMapper.getSpeed(dataDirAll));
+            result.setSpeedOrg(dataDirMapper.getSpeed(dataDirOrg));
+            result.setSpeedUnOrg(dataDirMapper.getSpeed(dataDirUnOrg));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         String resultStr = result.getData();
 
         return JSONArray.parseArray(resultStr);
+    }
+
+    /**
+     * 获取数据详情
+     * @param catalogPath 当前目录节点
+     * @return 当前节点的详情数据
+     */
+    @Override
+    public List<DataList> getDataListByPath(String catalogPath) {
+        DataDir dataDir = new DataDir();
+        String[] values = catalogPath.split(",");
+        if (values.length >= 2){
+            dataDir.setKeyFirst(values[1]);
+        }
+        if (values.length >= 3){
+            dataDir.setKeySecond(values[2]);
+        }
+        if (values.length >= 4){
+            dataDir.setKeyClass(values[3]);
+        }
+        if (values.length >= 4){
+            dataDir.setAttrClass(values[4]);
+        }
+        List<Map<String,Object>> data = dataDirMapper.getDataDirList(dataDir);
+        List<DataList> list = new ArrayList<>();
+        try {
+            for (Map<String,Object> record : data){
+                DataList dl = new DataList();
+                dl.setResourceName((String) record.get("resource_name"));
+                dl.setDataDayCycle(((BigDecimal) record.get("data_day_increase_num")).intValue());
+                dl.setDataRecords(((BigDecimal) record.get("data_records")).intValue());
+                dl.setDataSize((Double) record.get("data_size"));
+                dl.setOrgType((String) record.get("org_type"));
+                dl.setUpdateCycle((String) record.get("update_cycle"));
+                list.add(dl);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
     }
 
 

@@ -20,7 +20,7 @@
 
     <!--  这里的id是接口中的方法名-->
     <select id="getResourceNum" resultType="java.lang.Integer">
-        select count(distinct resource_name) from data_dir where 1=1
+        select ifnull(count(distinct resource_name), 0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
         </if>
@@ -38,7 +38,7 @@
         </if>
     </select>
     <select id="getRecordNum" resultType="java.lang.Integer">
-        select sum(data_records) from data_dir where 1=1
+        select ifnull(sum(data_records),0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
         </if>
@@ -56,7 +56,7 @@
         </if>
     </select>
     <select id="getDataSize" resultType="java.lang.Integer">
-        select sum(data_size) from data_dir where 1=1
+        select ifnull(sum(data_size),0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
         </if>
@@ -74,7 +74,7 @@
         </if>
     </select>
     <select id="getSpeed" resultType="java.lang.Integer">
-        select sum(data_day_increase_num) from data_dir where 1=1
+        select ifnull(sum(data_day_increase_num),0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
         </if>
@@ -103,4 +103,24 @@
     <select id="getAttrClassList" resultType="java.lang.String">
     select distinct attr_class from data_dir where 1=1
   </select>
+    <select id="getDataDirList" resultType="java.util.Map">
+        SELECT resource_name, org_type, update_cycle, sum(data_records) as data_records, sum(data_day_increase_num) as data_day_increase_num, sum(data_size) as data_size
+        FROM data_dir where 1=1
+        <if test="dataDir.keyFirst != null">
+            and key_first = #{dataDir.keyFirst}
+        </if>
+        <if test="dataDir.keySecond != null">
+            and key_second = #{dataDir.keySecond}
+        </if>
+        <if test="dataDir.keyClass != null">
+            and key_class = #{dataDir.keyClass}
+        </if>
+        <if test="dataDir.attrClass != null">
+            and attr_class = #{dataDir.attrClass}
+        </if>
+        <if test="dataDir.orgType != null">
+            and org_type = #{dataDir.orgType}
+        </if>
+        GROUP BY resource_name, org_type, update_cycle
+    </select>
 </mapper>

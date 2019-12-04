@@ -7,6 +7,7 @@ import com.cc.springbootmodel.core.ret.RetResult;
 import com.cc.springbootmodel.core.ret.RetResponse;
 import com.cc.springbootmodel.core.utils.UUIDUtil;
 import com.cc.springbootmodel.entity.DataDir;
+import com.cc.springbootmodel.entity.response.DataList;
 import com.cc.springbootmodel.service.DataDirService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -66,10 +67,10 @@ public class DataDirController {
         @ApiImplicitParam(name = "pageSize", value = "每页显示条数", dataType = "Integer", paramType = "query")
     })
     @GetMapping("/list")
-    public RetResult<PageInfo<DataDir>> list(@RequestParam(defaultValue="0") Integer pageNum,@RequestParam(defaultValue ="0") Integer pageSize) throws Exception {
+    public RetResult<PageInfo<DataList>> list(@RequestParam(defaultValue="0") Integer pageNum, @RequestParam(defaultValue ="0") Integer pageSize, @RequestParam String catalogPath) throws Exception {
         PageHelper.startPage(pageNum, pageSize);
-        List<DataDir> list = dataDirService.selectAll();
-        PageInfo<DataDir> pageInfo = new PageInfo<DataDir>(list);
+        List<DataList> list = dataDirService.getDataListByPath(catalogPath);
+        PageInfo<DataList> pageInfo = new PageInfo<DataList>(list);
         return RetResponse.makeOKRsp(pageInfo);
     }
 
@@ -84,29 +85,7 @@ public class DataDirController {
 
     @GetMapping("/getCountData")
     public RetResult<JSONArray> getCountData(@RequestParam String catalogPath) throws Exception{
-        String str = "[{\n" +
-                "  children: [\n" +
-                "    { title: \"资源数量\", value: 106, unit: '种' },\n" +
-                "    { title: \"总记录数\", value: 58, unit: '万条' },\n" +
-                "    { title: \"存储规模\", value: 53, unit: 'TB/GB' },\n" +
-                "    { title: \"数据增速\", value: 49, unit: '万条/天' },\n" +
-                "  ]\n" +
-                "}, {\n" +
-                "  title: \"结构化数据\", children: [\n" +
-                "    { title: \"资源数量\", value: 106, unit: '种' },\n" +
-                "    { title: \"总记录数\", value: 58, unit: '万条' },\n" +
-                "    { title: \"存储规模\", value: 53, unit: 'TB/GB' },\n" +
-                "    { title: \"数据增速\", value: 49, unit: '万条/天' },\n" +
-                "  ]\n" +
-                "}, {\n" +
-                "  title: \"非结构化数据\", children: [\n" +
-                "    { title: \"资源数量\", value: 106, unit: '种' },\n" +
-                "    { title: \"总记录数\", value: 58, unit: '万条' },\n" +
-                "    { title: \"存储规模\", value: 53, unit: 'TB/GB' },\n" +
-                "  ]\n" +
-                "}]";
-        JSONArray result = JSON.parseArray(str);
-        //JSONArray result = dataDirService.getCountDataService(catalogPath);
+        JSONArray result = dataDirService.getCountDataService(catalogPath);
         return RetResponse.makeOKRsp(result);
     }
 }
