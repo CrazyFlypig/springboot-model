@@ -3,6 +3,7 @@ package com.cc.springbootmodel.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.cc.springbootmodel.core.utils.UUIDUtil;
 import com.cc.springbootmodel.dao.DataDirMapper;
 import com.cc.springbootmodel.entity.DataDir;
 import com.cc.springbootmodel.entity.response.Catalog;
@@ -41,7 +42,7 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
         DataDir dataDir = new DataDir();
         int resourceNum = dataDirMapper.getResourceNum(dataDir);
         Catalog root = new Catalog("data-dir", "数据目录", 1, "code",
-                resourceNum, "root", "data-dir", "数据目录");
+                resourceNum, "root", "data-dir", "数据目录", 1);
         //获取一级分类
         List<String> firstKeys = dataDirMapper.getFirstKeyList();
         //获取二级分类
@@ -50,6 +51,7 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
         List<String> thirdKeys = dataDirMapper.getKeyClassList();
         //获取四级分类
         List<String> fourthKeys = dataDirMapper.getAttrClassList();
+        int sort = 2;
         for (String first : firstKeys){
             DataDir temp = new DataDir();
             temp.setKeyFirst(first);
@@ -57,9 +59,10 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
             if (resourceNum == 0){
                 continue;
             }
-            Catalog firstValue = new Catalog(first, first, 2, "code", resourceNum, root.getCatalogId(),
+            Catalog firstValue = new Catalog(UUIDUtil.getUUID(), first, 2, "code", resourceNum, root.getCatalogId(),
                     new StringBuffer().append(root.getCatalogPath()).append(",").append(first).toString(),
-                    new StringBuffer().append(root.getCatalogPathName()).append(",").append(first).toString());
+                    new StringBuffer().append(root.getCatalogPathName()).append(",").append(first).toString(),
+                    sort++);
             root.getChildren().add(firstValue);
             for (String second : secondKeys){
                 temp.setKeySecond(second);
@@ -67,9 +70,10 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
                 if (resourceNum == 0){
                     continue;
                 }
-                Catalog secondValue = new Catalog(second, second, 3, "code", resourceNum, firstValue.getCatalogId(),
+                Catalog secondValue = new Catalog(UUIDUtil.getUUID(), second, 3, "code", resourceNum, firstValue.getCatalogId(),
                         new StringBuffer().append(firstValue.getCatalogPath()).append(",").append(second).toString(),
-                        new StringBuffer().append(firstValue.getCatalogPathName()).append(",").append(second).toString());
+                        new StringBuffer().append(firstValue.getCatalogPathName()).append(",").append(second).toString(),
+                        sort++);
                 firstValue.getChildren().add(secondValue);
                 /*for (String third : thirdKeys){
                     temp.setKeyClass(third);
@@ -77,7 +81,7 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
                     if (resourceNum == 0){
                         continue;
                     }
-                    Catalog thirdValue = new Catalog(third, third, 4, "code", resourceNum, secondValue.getCatalogId(),
+                    Catalog thirdValue = new Catalog(UUIDUtil.getUUID(), third, 4, "code", resourceNum, secondValue.getCatalogId(),
                             new StringBuffer().append(secondValue.getCatalogPath()).append(",").append(third).toString(),
                             new StringBuffer().append(secondValue.getCatalogPathName()).append(",").append(third).toString());
                     secondValue.getChildren().add(thirdValue);
@@ -87,7 +91,7 @@ public class DataDirServiceImpl extends AbstractService<DataDir> implements Data
                         if (resourceNum == 0){
                             continue;
                         }
-                        Catalog fourthValue = new Catalog(fourth, fourth, 5, "code", resourceNum, thirdValue.getCatalogId(),
+                        Catalog fourthValue = new Catalog(UUIDUtil.getUUID(), fourth, 5, "code", resourceNum, thirdValue.getCatalogId(),
                                 new StringBuffer().append(thirdValue.getCatalogPath()).append(",").append(fourth).toString(),
                                 new StringBuffer().append(thirdValue.getCatalogPathName()).append(",").append(fourth).toString());
                         thirdValue.getChildren().add(fourthValue);

@@ -24,8 +24,10 @@ public class Catalog {
     // 子目录
     private List<Catalog> children;
 
+    private int sort;
+
     public Catalog(String catalogId, String catalogName, int catalogLevel, String catalogType, int resourceCount, String parentCatalogId, String catalogPath,
-                   String catalogPathName){
+                   String catalogPathName, int sort){
         this.catalogId = catalogId;
         this.catalogName = catalogName;
         this.catalogLevel = catalogLevel;
@@ -34,6 +36,7 @@ public class Catalog {
         this.parentCatalogId = parentCatalogId;
         this.catalogPath = catalogPath;
         this.catalogPathName = catalogPathName;
+        this.sort = sort;
         children = new ArrayList<>();
     }
 
