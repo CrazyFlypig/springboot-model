@@ -1,0 +1,42 @@
+
+
+
+23:42:41.351 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10001} connected
+23:42:41.529 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10002} connected
+23:42:41.704 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10003} connected
+23:42:41.872 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10004} connected
+23:42:42.045 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10005} connected
+23:42:42.067 logback [http-nio-9090-exec-1] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+23:42:42.070 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10005} pool-connect
+23:42:42.071 logback [http-nio-9090-exec-1] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@100ed892] will not be managed by Spring
+23:42:42.224 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20000} created. SELECT count(0) FROM data_dir
+23:42:42.239 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20000} Parameters : []
+23:42:42.240 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20000} Types : []
+23:42:42.292 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20000} executed. 58.297921 millis. SELECT count(0) FROM data_dir
+23:42:42.297 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} open
+23:42:42.305 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Header: [count(0)]
+23:42:42.319 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [21]
+23:42:42.326 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} closed
+23:42:42.329 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20000} clearParameters.
+23:42:42.329 logback [http-nio-9090-exec-1] DEBUG c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+23:42:42.346 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20001} created. SELECT id,resource_name,key_first,key_second,key_class,attr_class,org_type,data_records,data_size,update_cycle,data_day_increase_num  FROM data_dir LIMIT ?
+23:42:42.349 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20001} Parameters : [10]
+23:42:42.349 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20001} Types : [INTEGER]
+23:42:42.363 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20001} executed. 13.998071 millis. SELECT id,resource_name,key_first,key_second,key_class,attr_class,org_type,data_records,data_size,update_cycle,data_day_increase_num  FROM data_dir LIMIT ?
+23:42:42.363 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} open
+23:42:42.363 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Header: [id, resource_name, key_first, key_second, key_class, attr_class, org_type, data_records, data_size, update_cycle, data_day_increase_num]
+23:42:42.365 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8d3c57aa-173b-11ea-a1e2-fec6e320f364, aa, 时空, 生物特征信息, 实名活动, 行政管理行为, 结构化, 1, 1.0, 1, 1]
+23:42:42.369 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f3486ce-15ae-11ea-bf7e-53340c9ff903, aa, 时空, 生物特征信息, 实名活动, 行政管理行为, 结构化, 1, 1.0, 1, 1]
+23:42:42.371 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f34b662-15ae-11ea-bf7e-53340c9ff903, bb, 人, 基本信息, 实名活动, 社会事务行为, 结构化, 2, 2.0, 2, 2]
+23:42:42.373 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f34ff64-15ae-11ea-bf7e-53340c9ff903, cc, 物, 文档资料信息, 非实名活动, 社会事务行为, 非结构化, 3, 3.0, 3, 3]
+23:42:42.375 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f354456-15ae-11ea-bf7e-53340c9ff903, dd, 组织, 关系信息, 社会信用, 社会管理行为, 结构化, 4, 4.0, 4, 4]
+23:42:42.377 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f3576a6-15ae-11ea-bf7e-53340c9ff903, ee, 虚拟标识, 生物特征信息, 实名活动, 侦查调查行为, 结构化, 5, 5.0, 5, 5]
+23:42:42.379 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f359096-15ae-11ea-bf7e-53340c9ff903, ff, 物, 活动信息, 社会信用, 违法犯罪行为, 非结构化, 6, 6.0, 6, 6]
+23:42:42.381 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f35a108-15ae-11ea-bf7e-53340c9ff903, gg, 组织, 活动信息, 实名活动, 违法犯罪行为, 结构化, 7, 7.0, 7, 7]
+23:42:42.382 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f35d2ea-15ae-11ea-bf7e-53340c9ff903, hh, 人, 生物特征信息, 实名活动, 行政管理行为, 结构化, 8, 8.0, 8, 8]
+23:42:42.384 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [8f35e348-15ae-11ea-bf7e-53340c9ff903, ii, 人, 关系信息, 社会信用, 侦查调查行为, 结构化, 9, 9.0, 9, 9]
+23:42:42.386 logback [http-nio-9090-exec-1] DEBUG druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} closed
+23:42:42.386 logback [http-nio-9090-exec-1] DEBUG druid.sql.Statement - {conn-10005, pstmt-20001} clearParameters.
+23:42:42.386 logback [http-nio-9090-exec-1] DEBUG c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} enter cache
+23:42:42.388 logback [http-nio-9090-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15398cdf]
+23:42:42.390 logback [http-nio-9090-exec-1] DEBUG druid.sql.Connection - {conn-10005} pool-recycle
