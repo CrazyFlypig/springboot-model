@@ -5,8 +5,8 @@ public class DataList {
     private String resourceName;
     private String orgType;
     private String updateCycle;
-    private int dataRecords;
-    private int dataDayCycle;
+    private long dataRecords;
+    private long dataDayCycle;
     private double dataSize;
 
     public String getResourceName() {
@@ -21,11 +21,11 @@ public class DataList {
         return updateCycle;
     }
 
-    public int getDataRecords() {
+    public long getDataRecords() {
         return dataRecords;
     }
 
-    public int getDataDayCycle() {
+    public long getDataDayCycle() {
         return dataDayCycle;
     }
 
@@ -55,5 +55,13 @@ public class DataList {
 
     public void setDataSize(double dataSize) {
         this.dataSize = dataSize;
+    }
+
+    public void setDataRecords(long dataRecords) {
+        this.dataRecords = dataRecords;
+    }
+
+    public void setDataDayCycle(long dataDayCycle) {
+        this.dataDayCycle = dataDayCycle;
     }
 }

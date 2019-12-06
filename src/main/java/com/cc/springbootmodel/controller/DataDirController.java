@@ -1,6 +1,5 @@
 package com.cc.springbootmodel.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cc.springbootmodel.core.ret.RetResult;
@@ -9,6 +8,7 @@ import com.cc.springbootmodel.core.utils.UUIDUtil;
 import com.cc.springbootmodel.entity.DataDir;
 import com.cc.springbootmodel.entity.response.DataList;
 import com.cc.springbootmodel.service.DataDirService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.*;
@@ -70,7 +70,7 @@ public class DataDirController {
     public RetResult<PageInfo<DataList>> list(@RequestParam(defaultValue="0") Integer pageNum, @RequestParam(defaultValue ="0") Integer pageSize, @RequestParam String catalogPath) throws Exception {
         PageHelper.startPage(pageNum, pageSize);
         List<DataList> list = dataDirService.getDataListByPath(catalogPath);
-        PageInfo<DataList> pageInfo = new PageInfo<DataList>(list);
+        PageInfo<DataList> pageInfo = new PageInfo<>(list);
         return RetResponse.makeOKRsp(pageInfo);
     }
 

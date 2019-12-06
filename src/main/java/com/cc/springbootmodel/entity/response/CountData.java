@@ -5,17 +5,19 @@ public class CountData {
     private int resourceNumOrg = 0;
     private int resourceNumUnOrg = 0;
     private String resourceNumUnit = "种";
-    private int dataCountAll = 0;
-    private int dataCountOrg = 0;
-    private int dataCountUnOrg = 0;
-    private String dataCountUnit = "万条";
-    private int dataSizeAll = 0;
-    private int dataSizeOrg = 0;
-    private int dataSizeUnOrg = 0;
+    private long dataCountAll = 0;
+    private long dataCountOrg = 0;
+    private long dataCountUnOrg = 0;
+    private String dataCountUnit = "条";
+    private String dataCountOrgUnit = "条";
+    private String dataCountUnOrgUnit = "条";
+    private double dataSizeAll = 0;
+    private double dataSizeOrg = 0;
+    private double dataSizeUnOrg = 0;
     private String dataSizeUnit = "GB";
-    private int speedAll = 0;
-    private int speedOrg = 0;
-    private int speedUnOrg = 0;
+    private long speedAll = 0;
+    private long speedOrg = 0;
+    private long speedUnOrg = 0;
     private String speedUnit = "万条/天";
 
     public void setResourceNumAll(int resourceNumAll) {
@@ -79,6 +81,50 @@ public class CountData {
     }
 
     public void setSpeedUnOrg(int speedUnOrg) {
+        this.speedUnOrg = speedUnOrg;
+    }
+
+    public void setDataCountAll(long dataCountAll) {
+        this.dataCountAll = dataCountAll;
+    }
+
+    public void setDataCountOrg(long dataCountOrg) {
+        this.dataCountOrg = dataCountOrg;
+    }
+
+    public void setDataCountUnOrg(long dataCountUnOrg) {
+        this.dataCountUnOrg = dataCountUnOrg;
+    }
+
+    public void setDataCountOrgUnit(String dataCountOrgUnit) {
+        this.dataCountOrgUnit = dataCountOrgUnit;
+    }
+
+    public void setDataCountUnOrgUnit(String dataCountUnOrgUnit) {
+        this.dataCountUnOrgUnit = dataCountUnOrgUnit;
+    }
+
+    public void setDataSizeAll(double dataSizeAll) {
+        this.dataSizeAll = dataSizeAll;
+    }
+
+    public void setDataSizeOrg(double dataSizeOrg) {
+        this.dataSizeOrg = dataSizeOrg;
+    }
+
+    public void setDataSizeUnOrg(double dataSizeUnOrg) {
+        this.dataSizeUnOrg = dataSizeUnOrg;
+    }
+
+    public void setSpeedAll(long speedAll) {
+        this.speedAll = speedAll;
+    }
+
+    public void setSpeedOrg(long speedOrg) {
+        this.speedOrg = speedOrg;
+    }
+
+    public void setSpeedUnOrg(long speedUnOrg) {
         this.speedUnOrg = speedUnOrg;
     }
 

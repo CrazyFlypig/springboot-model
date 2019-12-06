@@ -37,7 +37,7 @@
             and org_type = #{dataDir.orgType}
         </if>
     </select>
-    <select id="getRecordNum" resultType="java.lang.Integer">
+    <select id="getRecordNum" resultType="java.lang.Long">
         select ifnull(sum(data_records),0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
@@ -55,7 +55,7 @@
             and org_type = #{dataDir.orgType}
         </if>
     </select>
-    <select id="getDataSize" resultType="java.lang.Integer">
+    <select id="getDataSize" resultType="java.lang.Double">
         select ifnull(sum(data_size),0) from data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
@@ -103,8 +103,9 @@
     <select id="getAttrClassList" resultType="java.lang.String">
     select distinct attr_class from data_dir where 1=1
   </select>
-    <select id="getDataDirList" resultType="java.util.Map">
-        SELECT resource_name, org_type, update_cycle, sum(data_records) as data_records, sum(data_day_increase_num) as data_day_increase_num, sum(data_size) as data_size
+    <select id="getDataDirList" resultType="com.cc.springbootmodel.entity.response.DataList">
+        SELECT resource_name as resourceName, org_type as orgType, update_cycle as updateCycle, sum(data_records) as dataRecords,
+        sum(data_day_increase_num) as dataDayCycle, sum(data_size) as dataSize
         FROM data_dir where 1=1
         <if test="dataDir.keyFirst != null">
             and key_first = #{dataDir.keyFirst}
